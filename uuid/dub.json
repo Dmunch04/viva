@@ -1,0 +1,8 @@
+{
+    "name": "uuid",
+    "description": "UUID library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

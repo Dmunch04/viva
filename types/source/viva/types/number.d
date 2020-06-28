@@ -6,14 +6,14 @@ module viva.types.number;
  +/
 template isNumber(T)
 {
-    static if (is(T == short)) enum bool isNumber = true;
-    else static if (is(T == ushort)) enum bool isNumber = true;
-    else static if (is(T == int)) enum bool isNumber = true;
-    else static if (is(T == uint)) enum bool isNumber = true;
-    else static if (is(T == long)) enum bool isNumber = true;
-    else static if (is(T == ulong)) enum bool isNumber = true;
-    else static if (is(T == float)) enum bool isNumber = true;
-    else static if (is(T == double)) enum bool isNumber = true;
+    static if (is(T : short)) enum bool isNumber = true;
+    else static if (is(T : ushort)) enum bool isNumber = true;
+    else static if (is(T : int)) enum bool isNumber = true;
+    else static if (is(T : uint)) enum bool isNumber = true;
+    else static if (is(T : long)) enum bool isNumber = true;
+    else static if (is(T : ulong)) enum bool isNumber = true;
+    else static if (is(T : float)) enum bool isNumber = true;
+    else static if (is(T : double)) enum bool isNumber = true;
     else enum bool isNumber = false;
 }
 
@@ -23,14 +23,14 @@ template isNumber(T)
  +/
 public bool isValueNumber(T)(T value) pure nothrow @safe
 {
-    static if (is(T == short)) return true;
-    else static if (is(T == ushort)) return true;
-    else static if (is(T == int)) return true;
-    else static if (is(T == uint)) return true;
-    else static if (is(T == long)) return true;
-    else static if (is(T == ulong)) return true;
-    else static if (is(T == float)) return true;
-    else static if (is(T == double)) return true;
+    static if (is(T : short)) return true;
+    else static if (is(T : ushort)) return true;
+    else static if (is(T : int)) return true;
+    else static if (is(T : uint)) return true;
+    else static if (is(T : long)) return true;
+    else static if (is(T : ulong)) return true;
+    else static if (is(T : float)) return true;
+    else static if (is(T : double)) return true;
     else return false;
 }
 
