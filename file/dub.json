@@ -1,0 +1,8 @@
+{
+    "name": "file",
+    "description": "File library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+}

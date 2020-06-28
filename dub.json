@@ -1,0 +1,52 @@
+{
+	"name": "viva",
+	"description": "A general purpose library for D",
+	"copyright": "Copyright © 2020, Munchii",
+	"authors": ["Munchii"],
+	"license": "MIT",
+	"homepage": "https://github.com/Dmunch04/viva",
+
+	"sourcePaths": ["source"],
+
+	"dependencies": {
+		":io": "*",
+		":file": "*",
+		":path": "*",
+		":time": "*",
+		":types": "*",
+		":exceptions": "*",
+		":gui": "*",
+		":json": "*",
+		":yaml": "*",
+		":xml": "*",
+		":html": "*",
+		":css": "*",
+		":logging": "*",
+		":discord": "*",
+		":http": "*",
+		":requests": "*",
+		":mistflake": "*",
+		":collections": "*"
+	},
+
+	"subPackages": [
+		"io",
+		"file",
+		"path",
+		"time",
+		"types",
+		"exceptions",
+		"gui",
+		"json",
+		"yaml",
+		"xml",
+		"html",
+		"css",
+		"logging",
+		"discord",
+		"http",
+		"requests",
+		"mistflake",
+		"collections"
+	]
+}

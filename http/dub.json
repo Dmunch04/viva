@@ -1,0 +1,8 @@
+{
+    "name": "http",
+    "description": "HTTP library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

@@ -1,0 +1,8 @@
+{
+    "name": "io",
+    "description": "IO library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

@@ -1,0 +1,8 @@
+{
+    "name": "xml",
+    "description": "XML library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

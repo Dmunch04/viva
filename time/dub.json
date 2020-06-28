@@ -1,0 +1,12 @@
+{
+    "name": "time",
+    "description": "Time library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:types": "*"
+    }
+}

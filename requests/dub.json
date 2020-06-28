@@ -1,0 +1,8 @@
+{
+    "name": "requests",
+    "description": "Requests library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+}

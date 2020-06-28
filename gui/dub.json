@@ -1,0 +1,8 @@
+{
+    "name": "gui",
+    "description": "GUI library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

@@ -1,0 +1,13 @@
+{
+    "name": "logging",
+    "description": "Logging library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:io": "*",
+        "viva:file": "*"
+    }
+}

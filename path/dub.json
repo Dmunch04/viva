@@ -1,0 +1,8 @@
+{
+    "name": "path",
+    "description": "Path library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}

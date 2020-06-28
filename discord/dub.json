@@ -1,0 +1,8 @@
+{
+    "name": "discord",
+    "description": "Discord API wrapper library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library"
+}
