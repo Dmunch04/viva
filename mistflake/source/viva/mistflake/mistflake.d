@@ -11,8 +11,8 @@ import std.random;
  + 10         4    11
  + Fields:
  +      timestamp = The `timestamp` field is a UNIX timestamp, and consists of 10 bits
- +      workerId = The `workerId` is the ID of the generator that generated the mistflake. This can be user defined or randomly generated
- +      id = The `id` field is the unique ID. For every ID that is generated in the generator, the number is incremented
+ +      workerId = The `workerId` is the ID of the generator that generated the mistflake. This can be user defined or randomly generated. Consists of 4 bits
+ +      id = The `id` field is the unique ID. For every ID that is generated in the generator, the number is incremented. Consists of 11 bits
  +
  + Example: An example Mistflake ID may look like `1593375000795500000000001`
  +/
