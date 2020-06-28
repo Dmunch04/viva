@@ -14,7 +14,7 @@ import std.random;
  +      workerId = The `workerId` is the ID of the generator that generated the mistflake. This can be user defined or randomly generated
  +      id = The `id` field is the unique ID. For every ID that is generated in the generator, the number is incremented
  +
- + Example: And example Mistflake ID may look like `1593375000795500000000001`
+ + Example: An example Mistflake ID may look like `1593375000795500000000001`
  +/
 struct Mistflake
 {
@@ -41,11 +41,16 @@ struct Mistflake
     {
         import std.conv : to;
 
-        string idStr = id.to!string;
-        const(ulong) zerosToAdd = 11 - idStr.length;
-        idStr = str("0".repeat(zerosToAdd), idStr);
+        // TODO: Makue sure worker ID isn't more than 4 digits long
+        string workerStr = worker.to!string;
+        const(ulong) workerZerosToAdd = 4 - workerStr.length;
+        workerStr = str("0".repeat(workerZerosToAdd), workerStr);
 
-        return str(time.toUnixTime().to!string, worker.to!string, idStr);
+        string idStr = id.to!string;
+        const(ulong) idZerosToAdd = 11 - idStr.length;
+        idStr = str("0".repeat(idZerosToAdd), idStr);
+
+        return str(time.toUnixTime().to!string, workerStr, idStr);
     }
 }
 
@@ -60,8 +65,6 @@ struct MistflakeGenerator
         ulong start;
         ulong worker;
     }
-
-    // TODO: How can we ensure the worker ID is 4 digits long?
 
     /++
      + Takes in a starting ID and a worker ID
@@ -93,13 +96,6 @@ struct MistflakeGenerator
      +/
     public Mistflake next()
     {
-        //const(SysTime) time = Clock.currTime();
-        //const(ulong) unixTime = time.toUnixTime();
-        // leap of a couple of billions here :) (about 5,9 i think)
-        //const(ulong) id = start + (seed * unixTime) * 10;
-        //const(ulong) id = start + (unixTime / seed);
-        //this.start = id;
-
         return Mistflake(Clock.currTime(), worker, start++);
     }
 }

@@ -319,7 +319,7 @@ struct HashTable
         entries = new Entry[newCapacity];
         for (int i = 0; i < entriesHolder.length; i++)
         {
-            Entry* entry = &entriesHolder[i];
+            const(Entry)* entry = &entriesHolder[i];
             if (entry.key == "") continue;
             
             entries[i].key = entriesHolder[i].key;
