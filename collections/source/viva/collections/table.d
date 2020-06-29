@@ -350,10 +350,8 @@ struct HashTable
      +/
     bool set(string key, EntryValue value)
     {
-        import std.stdio : writeln;
         if (count > capacity * 0.75)
         {
-            writeln("aa");
             adjustCapacity(growCapacity(capacity));
         }
 
