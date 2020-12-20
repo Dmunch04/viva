@@ -3,6 +3,20 @@ module viva.file.file;
 import std.stdio;
 import std.path;
 
+///
+enum FileAccessFlag
+{
+    READ = 1,
+    WRITE = 2,
+}
+
+///
+enum FileCreationFlag
+{
+    CREATE = 1,
+    TRUNCATE = 2,
+}
+
 /++
  + The `File` struct is a representation of a file on the PC 
  +/
@@ -51,7 +65,7 @@ class FileException : Exception
  +      mode = The file open mode
  + Returns: The new `File` object
  +/
-public File open(string path, string mode = "w")
+public File open(string path, FileCreationFlag creationFlag = FileCreationFlag.TRUNCATE)
 {
     return File("", 0);
 }
@@ -78,7 +92,7 @@ public bool createFile(string path, string fileName = "", bool throwError = fals
 {
     try
     {
-        auto file = open(buildPath(path, fileName), "w");
+        auto file = open(buildPath(path, fileName)/*, "w"*/);
         file.close();
         
         return true;

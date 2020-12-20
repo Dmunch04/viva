@@ -41,7 +41,7 @@ struct Mistflake
     {
         import std.conv : to;
 
-        // TODO: Makue sure worker ID isn't more than 4 digits long
+        // TODO: Make sure worker ID isn't more than 4 digits long
         string workerStr = worker.to!string;
         const(ulong) workerZerosToAdd = 4 - workerStr.length;
         workerStr = str("0".repeat(workerZerosToAdd), workerStr);

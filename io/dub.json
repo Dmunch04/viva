@@ -4,5 +4,9 @@
     "authors": ["Munchii"],
 
     "importPaths": ["source"],
-    "targetType": "library"
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:types": "*"
+    }
 }

@@ -63,3 +63,21 @@ if (isNumber!T)
     if (value > max) value = max;
     return value;
 }
+
+/++
+ +
+ +/
+bool inRange(T)(ref T value, T min, T max) pure nothrow @safe
+if (isNumber!T)
+{
+    return value >= min && value <= max;
+}
+
+/++
+ +
+ +/
+bool inRange(T)(T value, T min, T max) pure nothrow @safe
+if (isNumber!T)
+{
+    return inRange(value, min, max);
+}

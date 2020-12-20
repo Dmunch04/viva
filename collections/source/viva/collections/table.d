@@ -313,6 +313,40 @@ struct HashTable
         }
     }
 
+    /++
+     + Finds the index of the entry
+     + Params:
+     +      key = The key of the entry to look for
+     + Returns: The index of the entry in the `entries` array
+     +/
+    uint findEntryIndex(string key)
+    {
+        uint index = key.hash % capacity;
+
+        for (;;)
+        {
+            Entry* entry = &entries[index];
+            
+            if (entry.key == key || entry.key == "")
+            {
+                return index;
+            }
+
+            index = (index + 1) % capacity;
+        }
+    }
+
+    /++
+     + Checks if the table contains a certain element
+     + Params:
+     +      key = The key to find
+     + Returns: `false` if the key doesn't exist and `true` if it does exist
+     +/
+    bool hasEntry(string key)
+    {
+        return !findEntry(key).value.isNull;
+    }
+
     private void adjustCapacity(int newCapacity)
     {
         Entry[] entriesHolder = entries;
@@ -390,8 +424,30 @@ struct HashTable
      +/
     Nullable!EntryValue get(string key)
     {
-        if (count == 0) return Nullable!EntryValue.init; // how?
-        return findEntry(key).value.nullable.get; // how?
+        if (count == 0) return Nullable!EntryValue.init;
+        return findEntry(key).value.nullable.get;
+    }
+
+    /++
+     + Removes an item from the table
+     + Params:
+     +      key = The name of the entry to be removed
+     + Returns: `false` if the key doesn't exist and `true` if it does exist
+     +/
+    bool remove(string key)
+    {
+        if (hasEntry(key))
+        {
+            count--;
+            // TODO: Adjust capacity
+
+            uint index = findEntryIndex(key);
+            entries[index] = Entry("", Nullable!EntryValue.init);
+
+            return true;
+        }
+
+        return false;
     }
 }
 

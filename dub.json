@@ -27,7 +27,8 @@
 		":requests": "*",
 		":mistflake": "*",
 		":collections": "*",
-		":uuid": "*"
+		":uuid": "*",
+		":dvm": "*"
 	},
 
 	"subPackages": [
@@ -49,6 +50,7 @@
 		"requests",
 		"mistflake",
 		"collections",
-		"uuid"
+		"uuid",
+		"dvm"
 	]
 }

@@ -1,0 +1,12 @@
+{
+    "name": "dvm",
+    "description": "DVM library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:io": "*"
+    }
+}

@@ -8,6 +8,7 @@ import viva.requests;
 import viva.logging;
 import viva.mistflake;
 import viva.collections;
+import viva.dvm;
 
 // TODO: Should I do enum values with uppercase or lowercase? Currently I have of both kinds
 // TODO: Write unittests in each module instead of having this `app.d` file
@@ -102,4 +103,41 @@ void main()
 	println(table.set("hello7", 35));
 	println(table.get("hello7"));
 	println(table.entries);
+
+    string[] list = ["a", "b", "c"];
+    list.forEach((string t) { println(t.toUpper); });
+	string[] list2 = ["D:", "E;", "F!"];
+	list2.forEach((string t) { println(t.toLower); });
+
+	VM vm = VM([
+		Instruction(Opcode.ICONST, 10),
+		Instruction(Opcode.ICONST, 20),
+		Instruction(Opcode.IADD),
+		Instruction(Opcode.PRINT), // => 30
+		Instruction(Opcode.ICONST, 5),
+		Instruction(Opcode.ISUB),
+		Instruction(Opcode.PRINT), // => 25
+		Instruction(Opcode.INEG),
+		Instruction(Opcode.PRINT), // => -25
+		Instruction(Opcode.DUP),
+		Instruction(Opcode.IMUL),
+		Instruction(Opcode.PRINT), // => 625
+		Instruction(Opcode.ICONST, 25),
+		Instruction(Opcode.IDIV),
+		Instruction(Opcode.PRINT), // => 25
+		Instruction(Opcode.ICONST, -2),
+		Instruction(Opcode.SWAP),
+		Instruction(Opcode.ISUB),
+		Instruction(Opcode.PRINT), // => -27
+		Instruction(Opcode.HALT)
+	]);
+	vm.execute();
+
+	Cache!int cache = Cache!int();
+	cache.add("bob", 18);
+	cache.add("daniel", 16);
+	println(cache.get("daniel").get.integer);
+	cache.update("bob", 19);
+	println(cache.get("bob").get.integer);
+	cache.remove("daniel");
 }

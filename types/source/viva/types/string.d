@@ -83,3 +83,72 @@ public string str(T...)(T values) pure nothrow @safe
     return repeat(s, n);
 }
 
+/++
+ +
+ +/
+@property public string toUpper(ref string s) pure @safe
+{
+    import viva.types.number : inRange;
+    import std.format : format;
+
+    char[] a = new char[s.length];
+
+    int idx;
+    foreach (c; s)
+    {
+        int i = cast(int) c;
+        
+        if (i.inRange(97, 122))
+        {
+            i -= 32;
+        }
+
+        a[idx] = cast(char) i;
+        idx++;
+    }
+
+    return format!"%s"(a);
+}
+
+/++
+ +
+ +/
+@property public string toUpper(string s) pure @safe
+{
+    return toUpper(s);
+}
+
+/++
+ +
+ +/
+@property public string toLower(ref string s) @safe
+{
+    import viva.types.number : inRange;
+    import std.format : format;
+
+    char[] a = new char[s.length];
+
+    int idx;
+    foreach (c; s)
+    {
+        int i = cast(int) c;
+
+        if (i.inRange(65, 90))
+        {
+            i += 32;
+        }
+
+        a[idx] = cast(char) i;
+        idx++;
+    }
+
+    return format!"%s"(a);
+}
+
+/++
+ +
+ +/
+@property public string toLower(string s) @safe
+{
+    return toLower(s);
+}
