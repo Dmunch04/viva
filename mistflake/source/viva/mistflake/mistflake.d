@@ -90,6 +90,16 @@ struct MistflakeGenerator
     {
         this(start.id, worker);
     }
+ 
+    /++
+     + Takes in a starting Mistflake
+     + Params:
+     +      start = The starting Mistflake. The start and worker will be the given Mistflakes ID
+     +/
+    this(Mistflake start)
+    {
+        this(start.id, start.worker);
+    }
 
     /++
      + Generate the next Mistflake
