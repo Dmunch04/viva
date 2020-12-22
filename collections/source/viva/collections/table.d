@@ -1,7 +1,6 @@
 module viva.collections.table;
 
 import viva.exceptions.check : checkEquals;
-import viva.types.string;
 
 import std.typecons;
 import std.traits;
@@ -298,7 +297,7 @@ struct HashTable
      +/
     Entry* findEntry(string key)
     {
-        uint index = key.hash % capacity;
+        uint index = hashFNV1A(key) % capacity;
 
         for (;;)
         {
@@ -321,7 +320,7 @@ struct HashTable
      +/
     uint findEntryIndex(string key)
     {
-        uint index = key.hash % capacity;
+        uint index = hashFNV1A(key) % capacity;
 
         for (;;)
         {
@@ -334,6 +333,23 @@ struct HashTable
 
             index = (index + 1) % capacity;
         }
+    }
+
+    EntryValue[] getAll()
+    {
+        EntryValue[] values = new EntryValue[count];
+
+        int i;
+        foreach (entry; entries)
+        {
+            if (!entry.value.isNull)
+            {
+                values[i] = entry.value.get;
+                i++;
+            }
+        }
+
+        return values;
     }
 
     /++
@@ -454,4 +470,17 @@ struct HashTable
 private uint growCapacity(uint capacity)
 {
     return capacity < 8 ? 8 : capacity * 2;
+}
+
+private uint hashFNV1A(string s) pure nothrow @safe
+{
+    uint hash = 2_166_136_261;
+
+    foreach (c; s)
+    {
+        hash ^= c;
+        hash *= 16_777_619;
+    }
+
+    return hash;
 }

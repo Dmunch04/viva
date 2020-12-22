@@ -17,6 +17,23 @@ public string str(T...)(T values) pure nothrow @safe
 }
 
 /++
+ + Appends additional data to a string
+ + Params:
+ +      s = The string to append the value to
+ +      a = The value to be appended
+ + Returns: `s` with `a` appended
+ +/
+public string append(T)(ref string s, T a) pure nothrow @safe
+{
+    import std.conv : to;
+
+    string b = a.to!string;
+    s = s ~ b;
+
+    return s;
+}
+
+/++
  + Get the FNV-1a hash of the string
  + Example:
  +      ```d
@@ -84,7 +101,10 @@ public string str(T...)(T values) pure nothrow @safe
 }
 
 /++
- +
+ + Converts all characters in a givens string to uppercase
+ + Params:
+ +      s = The string to be processed
+ + Returns: The new string
  +/
 @property public string toUpper(ref string s) pure @safe
 {
@@ -97,7 +117,7 @@ public string str(T...)(T values) pure nothrow @safe
     foreach (c; s)
     {
         int i = cast(int) c;
-        
+
         if (i.inRange(97, 122))
         {
             i -= 32;
@@ -111,7 +131,10 @@ public string str(T...)(T values) pure nothrow @safe
 }
 
 /++
- +
+ + Converts all characters in a givens string to uppercase
+ + Params:
+ +      s = The string to be processed
+ + Returns: The new string
  +/
 @property public string toUpper(string s) pure @safe
 {
@@ -119,7 +142,10 @@ public string str(T...)(T values) pure nothrow @safe
 }
 
 /++
- +
+ + Converts all characters in a givens string to lowercase
+ + Params:
+ +      s = The string to be processed
+ + Returns: The new string
  +/
 @property public string toLower(ref string s) @safe
 {
@@ -146,9 +172,43 @@ public string str(T...)(T values) pure nothrow @safe
 }
 
 /++
- +
+ + Converts all characters in a givens string to lowercase
+ + Params:
+ +      s = The string to be processed
+ + Returns: The new string
  +/
 @property public string toLower(string s) @safe
 {
     return toLower(s);
+}
+
+/++
+ + Splits a string into an array by a given seperator
+ + Params:
+ +      s = The string to be splitted
+ +      sep = The seperator specifying where to split
+ + Returns: An array of the elements from the splitted string
+ +/
+@property public string[] split(ref string s, string sep) @safe
+{
+    string[] values;
+
+    foreach (c; s)
+    {
+        // TODO: What if the sep is more than just a char
+    }
+
+    return values;
+}
+
+/++
+ + Splits a string into an array by a given seperator
+ + Params:
+ +      s = The string to be splitted
+ +      sep = The seperator specifying where to split
+ + Returns: An array of the elements from the splitted string
+ +/
+@property public string[] split(string s, string sep) @safe
+{
+    return split(s, sep);
 }

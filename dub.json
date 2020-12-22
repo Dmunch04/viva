@@ -28,7 +28,8 @@
 		":mistflake": "*",
 		":collections": "*",
 		":uuid": "*",
-		":dvm": "*"
+		":dvm": "*",
+		":math": "*"
 	},
 
 	"subPackages": [
@@ -51,6 +52,7 @@
 		"mistflake",
 		"collections",
 		"uuid",
-		"dvm"
+		"dvm",
+		"math"
 	]
 }

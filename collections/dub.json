@@ -7,7 +7,6 @@
     "targetType": "library",
 
     "dependencies": {
-        "viva:exceptions": "*",
-        "viva:types": "*"
+        "viva:exceptions": "*"
     }
 }

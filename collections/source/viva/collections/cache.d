@@ -34,19 +34,7 @@ struct Cache(T)
     //public T[] getAll()
     public EntryValue[] getAll()
     {
-        EntryValue[] values = new EntryValue[cache.count];
-
-        int i;
-        foreach (entry; cache.entries)
-        {
-            if (!entry.value.isNull)
-            {
-                values[i] = entry.value.get;
-                i++;
-            }
-        }
-
-        return values;
+        return cache.getAll();
     }
 
     /++

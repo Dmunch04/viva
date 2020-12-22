@@ -9,6 +9,7 @@ import viva.logging;
 import viva.mistflake;
 import viva.collections;
 import viva.dvm;
+import viva.math;
 
 // TODO: Should I do enum values with uppercase or lowercase? Currently I have of both kinds
 // TODO: Write unittests in each module instead of having this `app.d` file
@@ -103,11 +104,15 @@ void main()
 	println(table.set("hello7", 35));
 	println(table.get("hello7"));
 	println(table.entries);
+	table.forEach((EntryValue value) { println(value); });
 
     string[] list = ["a", "b", "c"];
     list.forEach((string t) { println(t.toUpper); });
 	string[] list2 = ["D:", "E;", "F!"];
 	list2.forEach((string t) { println(t.toLower); });
+	int[] ages = [16, 32];
+	ages.forEach((ref int age) { age += 1; });
+	println(ages);
 
 	VM vm = VM([
 		Instruction(Opcode.ICONST, 10),
@@ -140,4 +145,8 @@ void main()
 	cache.update("bob", 19);
 	println(cache.get("bob").get.integer);
 	cache.remove("daniel");
+	cache.forEach((EntryValue value) { println(value); });
+
+	float[] pos = [34.6f, 94.7f, 23.0f];
+	println(pos.join(", "));
 }

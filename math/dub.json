@@ -1,0 +1,12 @@
+{
+    "name": "math",
+    "description": "Math library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:types": "*"
+    }
+}
