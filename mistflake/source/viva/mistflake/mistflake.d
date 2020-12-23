@@ -37,7 +37,7 @@ struct Mistflake
      + Generates a string representation out of the object
      + Returns: A Mistflake string representation
      +/
-    @property string asString()
+    @property string asString() @safe
     {
         import std.conv : to;
 
@@ -104,7 +104,7 @@ struct MistflakeGenerator
     /++
      + Generate the next Mistflake
      +/
-    public Mistflake next()
+    public Mistflake next() @safe
     {
         return Mistflake(Clock.currTime(), worker, start++);
     }
