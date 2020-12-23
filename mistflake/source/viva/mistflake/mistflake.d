@@ -121,7 +121,7 @@ struct MistflakeParser
      +      mistflake = The Mistflake string representation to be parsed
      + Returns: The generated Mistflake
      +/
-    public Mistflake parse(string mistflake)
+    public Mistflake parse(string mistflake) @safe
     {
         import std.conv : to;
 
