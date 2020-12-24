@@ -10,6 +10,7 @@ import viva.mistflake;
 import viva.collections;
 import viva.dvm;
 import viva.math;
+import viva.scrypt;
 
 // TODO: Should I do enum values with uppercase or lowercase? Currently I have of both kinds
 // TODO: Write unittests in each module instead of having this `app.d` file
@@ -149,4 +150,11 @@ void main()
 
 	float[] pos = [34.6f, 94.7f, 23.0f];
 	println(pos.join(", "));
+
+	string password = "yeet123xyz";
+	string hashedPassword = genScryptPasswordHash(password);
+	bool doesMatch = checkScryptPasswordHash(hashedPassword, password);
+	check(doesMatch, "password doesnt match? (something is wrong)");
+	bool doesFalseMatch = checkScryptPasswordHash(hashedPassword, password ~ "a");
+	check(!doesFalseMatch, "password does match? (something is wrong)");
 }

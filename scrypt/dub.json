@@ -1,0 +1,10 @@
+{
+    "name": "scrypt",
+    "description": "Scrypt library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "libs-posix": ["scrypt"]
+}

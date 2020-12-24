@@ -29,7 +29,8 @@
 		":collections": "*",
 		":uuid": "*",
 		":dvm": "*",
-		":math": "*"
+		":math": "*",
+		":scrypt": "*"
 	},
 
 	"subPackages": [
@@ -53,6 +54,7 @@
 		"collections",
 		"uuid",
 		"dvm",
-		"math"
+		"math",
+		"scrypt"
 	]
 }
