@@ -39,7 +39,7 @@ string genRandomSalt() {
   */
 string genScryptPasswordHash(string password, string salt = genRandomSalt(),
     size_t scrypt_outputlen = SCRYPT_OUTPUTLEN_DEFAULT, ulong N = SCRYPT_N_DEFAULT, uint r = SCRYPT_R_DEFAULT,
-    uint p = SCRYPT_P_DEFAULT) {
+    uint p = SCRYPT_P_DEFAULT) @trusted {
     ubyte[] outpw = new ubyte[scrypt_outputlen];
     libscrypt_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
     
@@ -51,7 +51,7 @@ string genScryptPasswordHash(string password, string salt = genRandomSalt(),
   * hash: An already hashed version of your password, for example fetched from a database
   * password: The password you wish to see if it matches
   */
-bool checkScryptPasswordHash(string hash, string password) {
+bool checkScryptPasswordHash(string hash, string password) @trusted {
     auto params = hash.splitter(TERMINATOR).array[1 .. $];
     enforce(params.length == 5, "invalid hash string, does not meet requirements");
     return genScryptPasswordHash(password, params[0], to!size_t(params[1]), to!ulong(params[2]), to!uint(params[3]), to!uint(params[4])) == hash;
