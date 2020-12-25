@@ -37,7 +37,7 @@ struct Mistflake
      + Generates a string representation out of the object
      + Returns: A Mistflake string representation
      +/
-    @property string asString() @safe
+    @property string asString() const @safe
     {
         import std.conv : to;
 
@@ -51,6 +51,16 @@ struct Mistflake
         idStr = str("0".repeat(idZerosToAdd), idStr);
 
         return str(time.toUnixTime().to!string, workerStr, idStr);
+    }
+
+    string toString() const @safe
+    {
+        return asString;
+    }
+
+    static Mistflake fromString(string s) @safe
+    {
+        return MistflakeParser().parse(s);
     }
 }
 

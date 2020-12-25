@@ -88,6 +88,7 @@ void main()
 	println(parsedId.time);
 	println(parsedId.id);
 	checkEquals(id.asString, parsedId.asString, "IDs doesn't match!");
+	println(parsedId.toString());
 
 	HashTable table = HashTable(5);
 	println(table.set("hello", 5));
