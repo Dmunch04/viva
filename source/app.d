@@ -11,12 +11,14 @@ import viva.collections;
 import viva.dvm;
 import viva.math;
 import viva.scrypt;
+import viva.docker;
 
 // TODO: Should I do enum values with uppercase or lowercase? Currently I have of both kinds
 // TODO: Write unittests in each module instead of having this `app.d` file
 
 void main()
 {
+	/*
 	auto json = loads("");
 
 	auto a = JSONValue(true);
@@ -33,6 +35,7 @@ void main()
 	println(test1["a"].str());
 	JSONValue test2 = ["a": 5];
 	println(test2["a"].integer());
+	*/
 
 	printfln("Hello, World!", str(Color.BLUE, "a", Color.RESET));
 	printfln("Hello, World!", str(Color.BACKGROUND_BOLD_BLUE, "b", Color.RESET));
@@ -158,4 +161,7 @@ void main()
 	check(doesMatch, "password doesnt match? (something is wrong)");
 	bool doesFalseMatch = checkScryptPasswordHash(hashedPassword, password ~ "a");
 	check(!doesFalseMatch, "password does match? (something is wrong)");
+
+	DockerOptions options = DockerOptions("hello-world");
+	println(runDockerShell(options));
 }

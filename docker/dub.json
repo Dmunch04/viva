@@ -1,0 +1,12 @@
+{
+    "name": "docker",
+    "description": "Docker library for viva",
+    "authors": ["Munchii"],
+
+    "importPaths": ["source"],
+    "targetType": "library",
+
+    "dependencies": {
+        "viva:io": "*"
+    }
+}
