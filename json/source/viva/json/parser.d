@@ -47,7 +47,7 @@ public struct JSONParser
 
         if (input.empty) throw new Exception("Unexpected end of file.");
 
-        with (Type)
+        with (JSONType)
         switch (input.front)
         {
             case 'n': return null_;

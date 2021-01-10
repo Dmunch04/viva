@@ -71,6 +71,16 @@ void main()
 	println(z);
 	checkEquals(z, 5, "x != 5");
 
+	enum SomeStatus
+	{
+		CREATED,
+		EXITED
+	}
+	string status = "Created";
+	// TODO: this is an annoying way
+	import std.typecons:Nullable;
+	println(status.matches!(string, SomeStatus)("Created", SomeStatus.CREATED, Nullable!SomeStatus(SomeStatus.EXITED)));
+
 	Response res = requests.get("http://httpbin.org/ip");
 	println(res.data);
 

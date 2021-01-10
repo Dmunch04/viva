@@ -42,7 +42,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  + Params:
  +      s = The string that should be hashed
  +/
-@property public uint hash(ref string s) pure nothrow @safe
+public uint hash(ref string s) pure nothrow @safe
 {
     uint hash = 2_166_136_261;
 
@@ -64,7 +64,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  + Params:
  +      s = The string that should be hashed
  +/
-@property public uint hash(string s) pure nothrow @safe
+public uint hash(string s) pure nothrow @safe
 {
     return hash(s);
 }
@@ -76,7 +76,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      n = The amount of times it should be repeated
  + Returns: The string repeated `n` times
  +/
-@property public string repeat(ref string s, long n) pure nothrow @safe
+public string repeat(ref string s, long n) pure nothrow @safe
 {
     string a = "";
 
@@ -95,7 +95,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      n = The amount of times it should be repeated
  + Returns: The string repeated `n` times
  +/
-@property public string repeat(string s, long n) pure nothrow @safe
+public string repeat(string s, long n) pure nothrow @safe
 {
     return repeat(s, n);
 }
@@ -106,7 +106,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      s = The string to be processed
  + Returns: The new string
  +/
-@property public string toUpper(ref string s) pure @safe
+public string toUpper(ref string s) pure @safe
 {
     import viva.types.number : inRange;
     import std.format : format;
@@ -136,7 +136,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      s = The string to be processed
  + Returns: The new string
  +/
-@property public string toUpper(string s) pure @safe
+public string toUpper(string s) pure @safe
 {
     return toUpper(s);
 }
@@ -147,7 +147,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      s = The string to be processed
  + Returns: The new string
  +/
-@property public string toLower(ref string s) @safe
+public string toLower(ref string s) @safe
 {
     import viva.types.number : inRange;
     import std.format : format;
@@ -177,7 +177,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      s = The string to be processed
  + Returns: The new string
  +/
-@property public string toLower(string s) @safe
+public string toLower(string s) @safe
 {
     return toLower(s);
 }
@@ -189,7 +189,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      sep = The seperator specifying where to split
  + Returns: An array of the elements from the splitted string
  +/
-@property public string[] split(ref string s, string sep) @safe
+public string[] split(ref string s, string sep) @safe
 {
     string[] values;
 
@@ -208,7 +208,7 @@ public string append(T)(ref string s, T a) pure nothrow @safe
  +      sep = The seperator specifying where to split
  + Returns: An array of the elements from the splitted string
  +/
-@property public string[] split(string s, string sep) @safe
+public string[] split(string s, string sep) @safe
 {
     return split(s, sep);
 }
