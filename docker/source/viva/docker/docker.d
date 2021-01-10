@@ -56,7 +56,7 @@ public struct DockerContainerInfo
 version(Windows) private string[] defaultArgs = ["docker"];
 else private string[] defaultArgs = ["sudo", "docker"];
 
-private string runCommand(string[] args)
+private string runCommand(string[] args) @safe
 {
     string[] command = defaultArgs ~ args;
     auto res = execute(command);
@@ -68,7 +68,7 @@ private string runCommand(string[] args)
  + run docker in a shell
  + Returns: ?
  +/
-public string runDockerShell(DockerOptions options)
+public string runDockerShell(DockerOptions options) @safe
 {
     string[] dockerArgs = ["run", "-it"];
 
@@ -93,7 +93,7 @@ public string runDockerShell(DockerOptions options)
  + lists all containers
  + Returns: a list of objects of info of all the containers
  +/
-public DockerContainerInfo[] runDockerContainerList()
+public DockerContainerInfo[] runDockerContainerList() @safe
 {
     import std.uni : isWhite;
 
@@ -118,7 +118,7 @@ public DockerContainerInfo[] runDockerContainerList()
  + build a dockerfile
  + Returns: ?
  +/
-public string runDockerBuild(string imageName, string dockerFile)
+public string runDockerBuild(string imageName, string dockerFile) @safe
 {
     string[] dockerArgs = ["build", "-f", dockerFile, "-t", imageName, "."];
     return runCommand(dockerArgs);
