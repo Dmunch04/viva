@@ -27,8 +27,14 @@ if (!is(T[0] : File))
  +/
 void println(T...)(T values) @safe
 {
-    foreach (value; values)
-        print(value.to!string, ' ');
+    foreach (i, value; values)
+    {
+        if (i < values.length - 1)
+            print(value.to!string, ' ');
+        else
+            print(value.to!string);
+    }
+
     print('\n');
 }
 
