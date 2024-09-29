@@ -1,8 +1,0 @@
-{
-    "name": "css",
-    "description": "CSS library for viva",
-    "authors": ["Munchii"],
-
-    "importPaths": ["source"],
-    "targetType": "library"
-}

@@ -53,12 +53,14 @@ public struct DockerContainerInfo
 }
 
 // TODO: maybe we shouldn't add the sudo? and have the user run the d project with sudo instead? so its not there if not needed?
-version(Windows) private string[] defaultArgs = ["docker"];
-else private string[] defaultArgs = ["sudo", "docker"];
+//version(Windows) private string[] defaultArgs = ["docker"];
+//else private string[] defaultArgs = ["sudo", "docker"];
+private string[] defaultArgs = ["docker"];
 
-private string runCommand(string[] args) @safe
+private string runCommand(string[] args, bool sudo = false) @safe
 {
     string[] command = defaultArgs ~ args;
+    if (sudo) command = "sudo" ~ command;
     auto res = execute(command);
     if (res.status != 0) throw new Exception("cannot run command: '" ~ command.join(" ") ~ "'. command exited with " ~ res.status.to!string);
     return res.output;
@@ -68,7 +70,7 @@ private string runCommand(string[] args) @safe
  + run docker in a shell
  + Returns: ?
  +/
-public string runDockerShell(DockerOptions options) @safe
+public string runDockerShell(DockerOptions options, bool sudo = false) @safe
 {
     string[] dockerArgs = ["run", "-it"];
 
@@ -86,7 +88,7 @@ public string runDockerShell(DockerOptions options) @safe
     
     if (options.command != null) dockerArgs ~= options.command.split(" ");
 
-    return runCommand(dockerArgs);
+    return runCommand(dockerArgs, sudo);
 }
 
 /++
@@ -118,8 +120,8 @@ public DockerContainerInfo[] runDockerContainerList() @safe
  + build a dockerfile
  + Returns: ?
  +/
-public string runDockerBuild(string imageName, string dockerFile) @safe
+public string runDockerBuild(string imageName, string dockerFile, bool sudo = false) @safe
 {
     string[] dockerArgs = ["build", "-f", dockerFile, "-t", imageName, "."];
-    return runCommand(dockerArgs);
+    return runCommand(dockerArgs, sudo);
 }
